@@ -1,5 +1,12 @@
 package com.moksh.pastebin.entity.request;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+@Data
+@Setter
+@Getter
 public class PresignedDTO {
     private String filename;
 
@@ -7,11 +14,4 @@ public class PresignedDTO {
         this.filename = filename;
     }
 
-    public String getFilename() {
-        return filename;
-    }
-
-    public void setFilename(String filename) {
-        this.filename = filename;
-    }
 }

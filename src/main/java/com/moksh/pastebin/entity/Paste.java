@@ -2,16 +2,19 @@ package com.moksh.pastebin.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.Instant;
 import java.util.UUID;
 
-@Data
+@Getter
+@Setter
 @Entity
-public class Paste {
+public class Paste extends Meta {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @Column(name = "short_link_suffix")
@@ -22,22 +25,5 @@ public class Paste {
 
     @Column(name = "content_url")
     String contentUrl;
-
-    @Column(name = "created_at")
-    Long createdAt;
-
-    @Column(name = "updated_at")
-    Long updatedAt;
-
-    @PrePersist
-    protected void onCreate() {
-        this.createdAt = Instant.now().getEpochSecond();
-    }
-
-    protected void onUpdate() {
-        this.updatedAt = Instant.now().getEpochSecond();
-    }
-
-
 
 }
